@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Masroofi Privacy Policy</title>
+<meta name="description" content="Privacy policy for the Masroofi Android app (com.masroofi.mobile).">
+<style>
+  :root { --bg:#fff; --fg:#1b1f24; --muted:#555d68; --line:#d8dde3; --accent:#0b5cad; --card:#f5f7fa; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#14171a; --fg:#e8ebee; --muted:#9aa4ae; --line:#2c3238; --accent:#6fb1ff; --card:#1c2025; } }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  main { max-width:760px; margin:0 auto; padding:24px 16px 64px; }
+  h1 { font-size:1.8rem; margin:.2em 0; } h2 { font-size:1.2rem; margin-top:2em; border-top:1px solid var(--line); padding-top:1em; }
+  a { color:var(--accent); } .muted { color:var(--muted); }
+  .summary { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:4px 16px; }
+  table { border-collapse:collapse; width:100%; display:block; overflow-x:auto; } th,td { border:1px solid var(--line); padding:6px 10px; text-align:left; vertical-align:top; }
+</style>
+</head>
+<body>
+<main>
+<h1>Masroofi Privacy Policy</h1>
+<p class="muted">App: Masroofi (Android package <code>com.masroofi.mobile</code>) &middot; Version covered: 1.0.0 &middot; Last updated: 4 November 2026</p>
+
+<h2>1. Who we are</h2>
+<p>Masroofi is a personal expense and installment tracker. It is provided by <strong>Omar Hariry</strong>
+(&ldquo;we&rdquo;, &ldquo;us&rdquo;). Contact: <a href="mailto:masroofi.support@gmail.com">masroofi.support@gmail.com</a>.</p>
+
+<h2>2. Summary</h2>
+<div class="summary">
+<ul>
+<li>Your financial entries are stored <strong>only on your phone</strong>. Masroofi has no account, no server of ours, and does not send your data to us or to anyone else.</li>
+<li>We do not collect, receive, sell or share your personal data. The app contains no advertising, analytics, tracking or crash-reporting libraries.</li>
+<li>You can export an <strong>encrypted backup</strong> and choose where the file goes. Only your password can open it, and nobody, including us, can recover it for you.</li>
+<li>The Android version on Google Play does <strong>not</strong> read your SMS messages or ask for contacts, location, camera, microphone or photo access.</li>
+</ul>
+</div>
+
+<h2>3. Data the app handles</h2>
+<p>Everything below is created by you inside the app and kept in a private database on your device (app-private storage that other apps cannot access).</p>
+<table>
+<tr><th>Data</th><th>Source</th><th>Where it is kept</th></tr>
+<tr><td>Transactions: type (expense/income), amount, currency, merchant text, category, date</td><td>You enter it</td><td>On-device database</td></tr>
+<tr><td>Installment plans and their payments (names, amounts, dates, paid dates)</td><td>You enter it</td><td>On-device database</td></tr>
+<tr><td>Categories (built-in and your own)</td><td>You</td><td>On-device database</td></tr>
+<tr><td>Bank message text you paste into &ldquo;Import bank message&rdquo; (optional)</td><td>You paste it</td><td>Read and interpreted on the device while the screen is open. The text is not stored. Only a one-way fingerprint and the import time are kept, so the same message is not imported twice.</td></tr>
+</table>
+<p>The app does not ask for your name, email address, phone number or any account. We have no access to any of this data.</p>
+
+<h2>4. Network use, third-party code and SDKs</h2>
+<ul>
+<li>The app&rsquo;s own code does not send your data over the internet, and it has no sign-in, cloud sync or remote storage. Android lists the <code>INTERNET</code> permission for the app framework; the app does not use it to transmit your data.</li>
+<li>The app is built with open-source libraries, namely Expo and React Native modules for local storage (SQLite), file access, file sharing, file picking and cryptography. These run on your device. We include <strong>no</strong> advertising, analytics, attribution, tracking or crash-reporting SDK.</li>
+<li>The &ldquo;Privacy policy&rdquo; button in Settings opens this page in your web browser. That visit is handled by your browser and by the website host (GitHub Pages), which may log standard request information such as your IP address under its own privacy policy. We do not receive or process that information.</li>
+</ul>
+
+<h2>5. Encrypted backups you create</h2>
+<ul>
+<li>In Settings you can choose <em>Export encrypted backup</em>. The file contains your categories, transactions (including ones you deleted, see section 7), installment plans and payments, and import fingerprints. It does not contain pasted bank message text.</li>
+<li>The file is encrypted on your phone with AES-256-GCM using a key derived from your password with Argon2id. Passwords must be at least 12 characters.</li>
+<li><strong>We cannot recover a forgotten password and cannot open your backup.</strong></li>
+<li>After encryption, the app opens Android&rsquo;s share sheet and <strong>you</strong> decide where the file goes (for example Files, Google Drive or email). Once you send it to another app or service, that service&rsquo;s own privacy policy applies. We cannot see where it went.</li>
+<li>A temporary encrypted copy stays in the app&rsquo;s private cache and is removed automatically the next time the app starts after it is more than 24 hours old. Restoring a backup replaces the current data on your phone after you confirm.</li>
+<li>Android&rsquo;s automatic cloud backup and phone-to-phone transfer are switched off for Masroofi, so your data is not copied to Google&rsquo;s backup service automatically. This means that if you uninstall the app, lose your phone or change phones without an exported backup, your data cannot be recovered.</li>
+</ul>
+
+<h2>6. Permissions</h2>
+<p>The Android build on Google Play requests no runtime permissions and shows no permission prompt. It does not request SMS, contacts, location, camera, microphone, photo or storage permissions. Android lists the following normal, automatically granted permissions for the app framework: <code>INTERNET</code> (see section 4) and <code>VIBRATE</code> (haptic feedback). Files you pick for restore are chosen through Android&rsquo;s system file picker, which gives the app access to only the file you select.</p>
+
+<h2>7. Retention and deletion</h2>
+<ul>
+<li>Your data stays on your phone until you remove it. <strong>Uninstalling Masroofi, or clearing its storage in Android Settings &rarr; Apps &rarr; Masroofi &rarr; Storage, permanently deletes all data held by the app.</strong> We cannot delete it for you because we never receive it.</li>
+<li>Deleting a transaction or installment plan inside the app hides it and marks it deleted; the entry remains in the app&rsquo;s private database and in later encrypted backups so a restore cannot bring back removed items by mistake. The app currently has no &ldquo;erase all data&rdquo; button; to remove everything, use the uninstall or clear-storage method above.</li>
+<li>Backup files you exported are under your control; delete them yourself from wherever you saved or sent them.</li>
+<li>Because we hold no copy of your data, there is nothing for us to access, correct, port or erase on request. You can do all of this in the app or by uninstalling.</li>
+</ul>
+
+<h2>8. Security</h2>
+<p>Your data is protected by your phone&rsquo;s own security (screen lock and Android app sandboxing). The on-device database is not separately encrypted; exported backups are, as described above. No method is perfectly secure; keep your device locked and your backup password safe.</p>
+
+<h2>9. Children</h2>
+<p>Masroofi is a general-purpose finance tool and is not directed at children under 13. We do not knowingly collect any data from anyone, including children.</p>
+
+<h2>10. Changes to this policy</h2>
+<p>If the app&rsquo;s data behaviour changes (for example if a future version adds a feature that reads SMS messages or uses the network), we will update this page and its date before that version is released.</p>
+
+<h2>11. Contact</h2>
+<p>Questions about this policy: <a href="mailto:masroofi.support@gmail.com">masroofi.support@gmail.com</a>.</p>
+</main>
+</body>
+</html>
