@@ -19,7 +19,7 @@
 <body>
 <main>
 <h1>Masroofi Privacy Policy</h1>
-<p class="muted">App: Masroofi (Android package <code>com.masroofi.mobile</code>) &middot; Version covered: 1.0.0 &middot; Last updated: 4 November 2026</p>
+<p class="muted">App: Masroofi (Android package <code>com.masroofi.mobile</code>) &middot; Version covered: 1.0.0 &middot; Last updated: 8 November 2026</p>
 
 <h2>1. Who we are</h2>
 <p>Masroofi is a personal expense and installment tracker. It is provided by <strong>Omar Hariry</strong>
@@ -31,7 +31,8 @@
 <li>Your financial entries are stored <strong>only on your phone</strong>. Masroofi has no account, no server of ours, and does not send your data to us or to anyone else.</li>
 <li>We do not collect, receive, sell or share your personal data. The app contains no advertising, analytics, tracking or crash-reporting libraries.</li>
 <li>You can export an <strong>encrypted backup</strong> and choose where the file goes. Only your password can open it, and nobody, including us, can recover it for you.</li>
-<li>The Android version on Google Play does <strong>not</strong> read your SMS messages or ask for contacts, location, camera, microphone or photo access.</li>
+<li>The app has an <strong>optional</strong> bank SMS import. It is <strong>off by default</strong> and does nothing until you read a consent screen and tap &ldquo;Agree and continue&rdquo;. It receives only new messages from the one sender you choose, processes them on your phone, and never uploads them (section 6).</li>
+<li>Masroofi does not ask for contacts, location, camera, microphone or photo access, and it cannot send SMS.</li>
 </ul>
 </div>
 
@@ -43,6 +44,7 @@
 <tr><td>Installment plans and their payments (names, amounts, dates, paid dates)</td><td>You enter it</td><td>On-device database</td></tr>
 <tr><td>Categories (built-in and your own)</td><td>You</td><td>On-device database</td></tr>
 <tr><td>Bank message text you paste into &ldquo;Import bank message&rdquo; (optional)</td><td>You paste it</td><td>Read and interpreted on the device while the screen is open. The text is not stored. Only a one-way fingerprint and the import time are kept, so the same message is not imported twice.</td></tr>
+<tr><td>Bank SMS from the one sender you choose (only if you turn on SMS import)</td><td>Received on your phone after you agree</td><td>Kept <strong>encrypted</strong> on the device for up to 24 hours so it can be understood or reviewed, then deleted. See section 6.</td></tr>
 </table>
 <p>The app does not ask for your name, email address, phone number or any account. We have no access to any of this data.</p>
 
@@ -55,7 +57,7 @@
 
 <h2>5. Encrypted backups you create</h2>
 <ul>
-<li>In Settings you can choose <em>Export encrypted backup</em>. The file contains your categories, transactions (including ones you deleted, see section 7), installment plans and payments, and import fingerprints. It does not contain pasted bank message text.</li>
+<li>In Settings you can choose <em>Export encrypted backup</em>. The file contains your categories, transactions (including ones you deleted, see section 8), installment plans and payments, and import fingerprints. It does not contain pasted bank message text or SMS text.</li>
 <li>The file is encrypted on your phone with AES-256-GCM using a key derived from your password with Argon2id. Passwords must be at least 12 characters.</li>
 <li><strong>We cannot recover a forgotten password and cannot open your backup.</strong></li>
 <li>After encryption, the app opens Android&rsquo;s share sheet and <strong>you</strong> decide where the file goes (for example Files, Google Drive or email). Once you send it to another app or service, that service&rsquo;s own privacy policy applies. We cannot see where it went.</li>
@@ -63,27 +65,48 @@
 <li>Android&rsquo;s automatic cloud backup and phone-to-phone transfer are switched off for Masroofi, so your data is not copied to Google&rsquo;s backup service automatically. This means that if you uninstall the app, lose your phone or change phones without an exported backup, your data cannot be recovered.</li>
 </ul>
 
-<h2>6. Permissions</h2>
-<p>The Android build on Google Play requests no runtime permissions and shows no permission prompt. It does not request SMS, contacts, location, camera, microphone, photo or storage permissions. Android lists the following normal, automatically granted permissions for the app framework: <code>INTERNET</code> (see section 4) and <code>VIBRATE</code> (haptic feedback). Files you pick for restore are chosen through Android&rsquo;s system file picker, which gives the app access to only the file you select.</p>
+<h2>6. Optional bank SMS import (Android)</h2>
+<p>This feature is optional and <strong>off by default</strong>. Masroofi never receives a text message until you turn it on.</p>
+<ul>
+<li><strong>Consent first.</strong> When you choose Review or Auto-import, Masroofi shows a screen that explains what it will receive, why and how it is used, with the buttons &ldquo;Agree and continue&rdquo; and &ldquo;No thanks&rdquo;. Going back or closing it counts as &ldquo;No thanks&rdquo;, and nothing is requested from Android. Auto-import needs a second, separate agreement. Only after you agree does Android show its own permission prompt.</li>
+<li><strong>What it can access.</strong> The <code>RECEIVE_SMS</code> permission lets Masroofi receive <em>new</em> text messages as they arrive. It does not read your inbox or old messages and cannot send messages. Android words this permission as &ldquo;send and view SMS messages&rdquo;; the app tells you so before asking.</li>
+<li><strong>Only one sender.</strong> You type the one sender you want to accept (for example the name shown above your bank&rsquo;s messages, a short number or a phone number). Messages from anyone else are ignored before their text is read; only a counter changes.</li>
+<li><strong>What happens to a message from your sender.</strong>
+  <ol>
+  <li>One-time codes, passwords, security and fraud-alert messages are recognised and dropped. They are never stored.</li>
+  <li>Other messages are kept on your phone, <strong>encrypted</strong> with an Android Keystore key that the app cannot export, for <strong>up to 24 hours</strong>, so they can be processed or reviewed. The sender and the time of receipt of a waiting message are kept in the app&rsquo;s private storage unencrypted; the text is encrypted.</li>
+  <li>In <strong>Review</strong> mode nothing is saved until you open the message and confirm it.</li>
+  <li>In <strong>Auto-import</strong> mode only a clearly recognised completed card purchase in Egyptian pounds is saved as a transaction, marked &ldquo;Auto-imported from bank SMS&rdquo;, and you can edit or undo it. Refunds, transfers, foreign-currency purchases, unclear dates, repeats and anything doubtful are not saved; they wait for your review. A suggested category can occasionally be wrong; unknown shops are saved under &ldquo;Other&rdquo;.</li>
+  <li>After a message is saved, discarded or expires, its text is deleted. A transaction saved from a message contains only the amount, merchant, date and category, and a one-way fingerprint used to avoid importing the same message twice. The message text is not kept in the database.</li>
+  </ol></li>
+<li><strong>Nothing leaves your phone.</strong> The text is processed by the app on the device only. It is not uploaded, shared, sold or used for advertising, and it is not used for anything other than adding the transactions you see in the app.</li>
+<li><strong>You stay in control.</strong> Choose <em>Turn off SMS import</em> in Settings at any time (this also deletes messages still waiting), remove the sender, or take the permission away in Android Settings &rarr; Apps &rarr; Masroofi &rarr; Permissions.</li>
+<li><strong>Limits.</strong> The reader is built for specific English and Arabic bank message formats and for amounts in Egyptian pounds; messages it does not recognise are not imported. Sender names are not verified by the phone network, so someone else could send a message that looks like it came from your bank; Review mode is the recommended way to start.</li>
+<li><strong>Devices without telephony.</strong> On tablets and other devices that cannot receive text messages, the feature shows as unavailable and nothing is requested.</li>
+</ul>
 
-<h2>7. Retention and deletion</h2>
+<h2>7. Permissions</h2>
+<p>The Android build lists these permissions: <code>INTERNET</code> (see section 4), <code>VIBRATE</code> (haptic feedback), <code>WAKE_LOCK</code> (lets the background step finish processing a message you chose to receive; granted automatically) and <code>RECEIVE_SMS</code>. <code>RECEIVE_SMS</code> is the only one that shows a prompt, and only after you agree on the consent screen described in section 6; if you never turn on SMS import you are never asked. The app does not request <code>READ_SMS</code>, <code>SEND_SMS</code>, call log, contacts, location, camera, microphone, photo or storage permissions. Files you pick for restore are chosen through Android&rsquo;s system file picker, which gives the app access to only the file you select.</p>
+
+<h2>8. Retention and deletion</h2>
 <ul>
 <li>Your data stays on your phone until you remove it. <strong>Uninstalling Masroofi, or clearing its storage in Android Settings &rarr; Apps &rarr; Masroofi &rarr; Storage, permanently deletes all data held by the app.</strong> We cannot delete it for you because we never receive it.</li>
 <li>Deleting a transaction or installment plan inside the app hides it and marks it deleted; the entry remains in the app&rsquo;s private database and in later encrypted backups so a restore cannot bring back removed items by mistake. The app currently has no &ldquo;erase all data&rdquo; button; to remove everything, use the uninstall or clear-storage method above.</li>
+<li>Bank SMS text is removed from the device when it is saved, discarded, expires (24 hours at most), when you choose <em>Turn off SMS import</em>, or when you uninstall the app.</li>
 <li>Backup files you exported are under your control; delete them yourself from wherever you saved or sent them.</li>
 <li>Because we hold no copy of your data, there is nothing for us to access, correct, port or erase on request. You can do all of this in the app or by uninstalling.</li>
 </ul>
 
-<h2>8. Security</h2>
-<p>Your data is protected by your phone&rsquo;s own security (screen lock and Android app sandboxing). The on-device database is not separately encrypted; exported backups are, as described above. No method is perfectly secure; keep your device locked and your backup password safe.</p>
+<h2>9. Security</h2>
+<p>Your data is protected by your phone&rsquo;s own security (screen lock and Android app sandboxing). The on-device database is not separately encrypted; exported backups are, as described above. The text of waiting bank SMS messages is encrypted with an Android Keystore key and removed after at most 24 hours. No method is perfectly secure; keep your device locked and your backup password safe.</p>
 
-<h2>9. Children</h2>
+<h2>10. Children</h2>
 <p>Masroofi is a general-purpose finance tool and is not directed at children under 13. We do not knowingly collect any data from anyone, including children.</p>
 
-<h2>10. Changes to this policy</h2>
-<p>If the app&rsquo;s data behaviour changes (for example if a future version adds a feature that reads SMS messages or uses the network), we will update this page and its date before that version is released.</p>
+<h2>11. Changes to this policy</h2>
+<p>If the app&rsquo;s data behaviour changes (for example if a future version uses the network or processes data in a new way), we will update this page and its date before that version is released.</p>
 
-<h2>11. Contact</h2>
+<h2>12. Contact</h2>
 <p>Questions about this policy: <a href="mailto:masroofi.support@gmail.com">masroofi.support@gmail.com</a>.</p>
 </main>
 </body>
