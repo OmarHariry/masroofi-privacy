@@ -19,7 +19,7 @@
 <body>
 <main>
 <h1>Masroofi Privacy Policy</h1>
-<p class="muted">App: Masroofi (Android package <code>com.masroofi.mobile</code>) &middot; Version covered: 1.0.0 &middot; Last updated: 8 November 2026</p>
+<p class="muted">App: Masroofi (Android package <code>com.masroofi.mobile</code>) &middot; Version covered: 1.0.0 (build 5 and later) &middot; Last updated: 11 November 2026</p>
 
 <h2>1. Who we are</h2>
 <p>Masroofi is a personal expense and installment tracker. It is provided by <strong>Omar Hariry</strong>
@@ -40,7 +40,7 @@
 <p>Everything below is created by you inside the app and kept in a private database on your device (app-private storage that other apps cannot access).</p>
 <table>
 <tr><th>Data</th><th>Source</th><th>Where it is kept</th></tr>
-<tr><td>Transactions: type (expense/income), amount, currency, merchant text, category, date</td><td>You enter it</td><td>On-device database</td></tr>
+<tr><td>Transactions: type (expense/income), amount, currency (one of EGP, SAR, AED, USD, EUR, GBP, KWD or QAR; amounts are never converted between currencies), merchant text, category, date</td><td>You enter it</td><td>On-device database</td></tr>
 <tr><td>Installment plans and their payments (names, amounts, dates, paid dates)</td><td>You enter it</td><td>On-device database</td></tr>
 <tr><td>Categories (built-in and your own)</td><td>You</td><td>On-device database</td></tr>
 <tr><td>Bank message text you paste into &ldquo;Import bank message&rdquo; (optional)</td><td>You paste it</td><td>Read and interpreted on the device while the screen is open. The text is not stored. Only a one-way fingerprint and the import time are kept, so the same message is not imported twice.</td></tr>
@@ -76,12 +76,12 @@
   <li>One-time codes, passwords, security and fraud-alert messages are recognised and dropped. They are never stored.</li>
   <li>Other messages are kept on your phone, <strong>encrypted</strong> with an Android Keystore key that the app cannot export, for <strong>up to 24 hours</strong>, so they can be processed or reviewed. The sender and the time of receipt of a waiting message are kept in the app&rsquo;s private storage unencrypted; the text is encrypted.</li>
   <li>In <strong>Review</strong> mode nothing is saved until you open the message and confirm it.</li>
-  <li>In <strong>Auto-import</strong> mode only a clearly recognised completed card purchase in Egyptian pounds is saved as a transaction, marked &ldquo;Auto-imported from bank SMS&rdquo;, and you can edit or undo it. Refunds, transfers, foreign-currency purchases, unclear dates, repeats and anything doubtful are not saved; they wait for your review. A suggested category can occasionally be wrong; unknown shops are saved under &ldquo;Other&rdquo;.</li>
+  <li>In <strong>Auto-import</strong> mode (experimental and optional; it is off unless you turn it on and agree on its own screen, which says that it can make mistakes) a message that the app recognises with certainty as a completed card purchase is saved as a transaction without you opening it: a stated debit, one amount with a clear currency (EGP, SAR, AED, USD, EUR, GBP, KWD or QAR), a merchant, an unambiguous date, and no duplicate. It is marked &ldquo;Auto-imported from bank SMS&rdquo; and you can edit, delete or undo it (an undone message is not imported again). Transfers, refunds, pending or failed payments, security messages, unclear or doubtful messages, possible duplicates and unknown or ambiguous currencies are never saved automatically: they wait for your review or are discarded. Auto-import can be wrong (a wrong amount, shop, date or category, or a fake message sent from a forged sender name), so every automatic transaction stays visible and correctable. A suggested category can occasionally be wrong; unknown shops are saved under &ldquo;Other&rdquo;. You can switch back to Review or Off at any time; transactions already saved stay. Everything is decided on your phone; nothing is sent anywhere.</li>
   <li>After a message is saved, discarded or expires, its text is deleted. A transaction saved from a message contains only the amount, merchant, date and category, and a one-way fingerprint used to avoid importing the same message twice. The message text is not kept in the database.</li>
   </ol></li>
 <li><strong>Nothing leaves your phone.</strong> The text is processed by the app on the device only. It is not uploaded, shared, sold or used for advertising, and it is not used for anything other than adding the transactions you see in the app.</li>
 <li><strong>You stay in control.</strong> Choose <em>Turn off SMS import</em> in Settings at any time (this also deletes messages still waiting), remove the sender, or take the permission away in Android Settings &rarr; Apps &rarr; Masroofi &rarr; Permissions.</li>
-<li><strong>Limits.</strong> The reader is built for specific English and Arabic bank message formats and for amounts in Egyptian pounds; messages it does not recognise are not imported. Sender names are not verified by the phone network, so someone else could send a message that looks like it came from your bank; Review mode is the recommended way to start.</li>
+<li><strong>Limits.</strong> The reader is built for specific English and Arabic bank message formats and for amounts in the eight supported currencies (EGP, SAR, AED, USD, EUR, GBP, KWD, QAR), which it never converts; messages it does not recognise, or whose currency is unclear, are not saved automatically. There is no accuracy guarantee: it has not been measured on real bank messages. Sender names are not verified by the phone network, so someone else could send a message that looks like it came from your bank; Review mode is the recommended way to start, and Auto-import is experimental.</li>
 <li><strong>Devices without telephony.</strong> On tablets and other devices that cannot receive text messages, the feature shows as unavailable and nothing is requested.</li>
 </ul>
 
